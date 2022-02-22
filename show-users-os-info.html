@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<h1>User's info page</h1>
+	<div>
+		<h3>general info: </h3>
+		<h5 id="info"></h5>
+	</div>
+	<div>
+		<h3>plataform info: </h3>
+		<h5 id="platform"></h5>
+	</div>
+	<div>
+		<h3>os_cpu info: </h3>
+		<h5 id="os_cpu"></h5>
+	</div>
+	<div>
+		<h3>OS: </h3>
+		<h5 id="user-os"></h5>
+	</div>
+	<script>
+		const { userAgent, platform, oscpu } = window.navigator
+
+		function showBrowserInfo() {
+			const browserInfoTag = document.getElementById('info')
+			const platformInfoTag = document.getElementById('platform')
+			const os_cpuInfoTag = document.getElementById('os_cpu')
+			browserInfoTag.innerText = userAgent
+			platformInfoTag.innerText = platform
+			os_cpuInfoTag.innerText = oscpu
+		}
+		showBrowserInfo()
+
+		function showUserOs() {
+			const OS = ['android', 'ios', 'windows', 'mac', 'ubuntu']
+			const userOsTag = document.getElementById('user-os')
+
+			function findUserOs(el) {
+				const hasOS = userAgent.toLocaleLowerCase().includes(el)
+				console.log(hasOS)
+				if (hasOS) userOsTag.innerText = el
+			}
+			OS.map(findUserOs)
+		}
+		showUserOs()
+	</script>
+</body>
+</html>
