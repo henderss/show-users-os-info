@@ -81,7 +81,7 @@
 		
 		const WebkitSetFullscreen = () => {
 			const buttonFullscreen = document.getElementById('fullscreen-button-webkit')
-			buttonFullscreen.onClick = () => {
+			buttonFullscreen.onclick = () => {
 				try {	
 					document.documentElement.webkitRequestFullscreen()
 					screen.orientation.lock('landscape')
@@ -96,7 +96,7 @@
 		
 		const _Webkit_set_Full_Screen_ = () => {
 			const buttonFullscreen = document.getElementById('fullscreen-button-webkit_whit_upper_S')
-			buttonFullscreen.onClick = () => {
+			buttonFullscreen.onclick = () => {
 				try {	
 					document.documentElement.webkitRequestFullScreen()
 					screen.orientation.lock('landscape')
@@ -111,7 +111,7 @@
 		
 		const requestFullscreenNormalMethod = () => {
 			const buttonFullscreen = document.getElementById('fullscreen-button-normal')
-			buttonFullscreen.onClick = () => {
+			buttonFullscreen.onclick = () => {
 				try {	
 					document.documentElement.requestFullscreen()
 					screen.orientation.lock('landscape')
