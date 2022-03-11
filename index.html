@@ -15,9 +15,41 @@
 		<h5 id="os_cpu"></h5>
 	</div>
 	<div>
+		<h3>fullscreen enable info: </h3>
+		<h5 id="fullscreen-enable"></h5>
+	</div>
+	<div>
 		<h3>OS: </h3>
 		<h5 id="user-os"></h5>
 	</div>
+	
+	<hr/>
+	<hr/>
+	<hr/>
+	
+	<div>
+		<h3>fullScreen iOS - method 1 </h3>
+		<button id="fullscreen-button-webkit"> request full screeen </button>
+	</div>
+	
+	<hr/>
+	<hr/>
+	<hr/>
+	
+	<div>
+		<h3>fullScreen iOS - method 2 </h3>
+		<button id="fullscreen-button-webkit_whit_upper_S"> request full screeen - method with upper S </button>
+	</div>
+	
+	<hr/>
+	<hr/>
+	<hr/>
+	
+	<div>
+		<h3>fullScreen iOS </h3>
+		<button id="fullscreen-button-normal"> request full screeen - normal method </button>
+	</div>
+	
 	<script>
 		const { userAgent, platform, oscpu } = window.navigator
 
@@ -25,6 +57,8 @@
 			const browserInfoTag = document.getElementById('info')
 			const platformInfoTag = document.getElementById('platform')
 			const os_cpuInfoTag = document.getElementById('os_cpu')
+			const fullscreenEnable = document.getElementById('fullscreen-enable')
+			fullscreenEnable.innerText = document.fullscreenEnabled.toString()
 			browserInfoTag.innerText = userAgent
 			platformInfoTag.innerText = platform
 			os_cpuInfoTag.innerText = oscpu
@@ -43,6 +77,37 @@
 			OS.map(findUserOs)
 		}
 		showUserOs()
+		
+		const requestFullscreen = async (fullscreenMethod) => {
+			try {	
+				await fullscreenMethod()
+				await screen.orientation.lock('landscape')
+			} catch (err) {
+				alert(err)
+			}
+		}
+		
+		const WebkitSetFullscreen = () => {
+			const buttonFullscreen = document.getElementById('fullscreen-button-webkit')
+			buttonFullscreen.onClick = () => requestFullscreen(document.documentElement.webkitRequestFullscreen)
+		}
+		WebkitSetFullscreen()
+		
+		
+		const _Webkit_set_Full_Screen_ = () => {
+			const buttonFullscreen = document.getElementById('fullscreen-button-webkit_whit_upper_S')
+			buttonFullscreen.onClick = () => requestFullscreen(document.documentElement.webkitRequestFullScreen)
+		}
+		_Webkit_set_Full_Screen_()
+		
+		
+		const requestFullscreenNormalMethod = () => {
+			const buttonFullscreen = document.getElementById('fullscreen-button-normal')
+			buttonFullscreen.onClick = () => requestFullscreen(document.documentElement.requestFullscreen)
+		}
+		requestFullscreenNormalMethod()
+		
+		
 	</script>
 </body>
 </html>
