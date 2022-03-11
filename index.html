@@ -78,32 +78,47 @@
 		}
 		showUserOs()
 		
-		const requestFullscreen = async (fullscreenMethod) => {
-			try {	
-				await fullscreenMethod()
-				await screen.orientation.lock('landscape')
-			} catch (err) {
-				alert(err)
-			}
-		}
 		
 		const WebkitSetFullscreen = () => {
 			const buttonFullscreen = document.getElementById('fullscreen-button-webkit')
-			buttonFullscreen.onClick = () => requestFullscreen(document.documentElement.webkitRequestFullscreen)
+			buttonFullscreen.onClick = () => {
+				try {	
+					document.documentElement.webkitRequestFullscreen()
+					screen.orientation.lock('landscape')
+				} catch (err) {
+					alert(err)
+				}
+			}
 		}
 		WebkitSetFullscreen()
 		
 		
+		
 		const _Webkit_set_Full_Screen_ = () => {
 			const buttonFullscreen = document.getElementById('fullscreen-button-webkit_whit_upper_S')
-			buttonFullscreen.onClick = () => requestFullscreen(document.documentElement.webkitRequestFullScreen)
+			buttonFullscreen.onClick = () => {
+				try {	
+					document.documentElement.webkitRequestFullScreen()
+					screen.orientation.lock('landscape')
+				} catch (err) {
+					alert(err)
+				}
+			}
 		}
 		_Webkit_set_Full_Screen_()
+
 		
 		
 		const requestFullscreenNormalMethod = () => {
 			const buttonFullscreen = document.getElementById('fullscreen-button-normal')
-			buttonFullscreen.onClick = () => requestFullscreen(document.documentElement.requestFullscreen)
+			buttonFullscreen.onClick = () => {
+				try {	
+					document.documentElement.requestFullscreen()
+					screen.orientation.lock('landscape')
+				} catch (err) {
+					alert(err)
+				}
+			}
 		}
 		requestFullscreenNormalMethod()
 		
